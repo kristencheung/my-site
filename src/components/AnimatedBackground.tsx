@@ -115,13 +115,7 @@ export default function AnimatedBackground() {
         }
       }
 
-      function createSplash(
-        p: any,
-        x: number,
-        y: number,
-        size: number,
-        symbolType: string
-      ) {
+      function createSplash(p: any, x: number, y: number, size: number) {
         const particleCount = 4
         const particles = []
 
@@ -156,19 +150,21 @@ export default function AnimatedBackground() {
             this.particles.forEach((particle) => {
               if (particle.alpha <= 0) return
 
-              p.push()
-              p.translate(particle.x, particle.y)
-              p.rotate(particle.rotation)
-              p.stroke(
+              void p.push()
+              void p.translate(particle.x, particle.y)
+              void p.rotate(particle.rotation)
+              void p.stroke(
                 particle.color.r,
                 particle.color.g,
                 particle.color.b,
                 particle.color.alpha
               )
-              p.noFill()
-              p.strokeWeight(
-                particle.layer < 0.3 ? 0.3 : particle.layer < 0.7 ? 0.5 : 0.7
-              ) * responsive.symbolSize
+              void p.noFill()
+              void (
+                p.strokeWeight(
+                  particle.layer < 0.3 ? 0.3 : particle.layer < 0.7 ? 0.5 : 0.7
+                ) * responsive.symbolSize
+              )
 
               switch (particle.type) {
                 case "cross":
@@ -229,9 +225,7 @@ export default function AnimatedBackground() {
 
               if (isInTextArea && !this.hasCollided) {
                 this.hasCollided = true
-                splashes.push(
-                  createSplash(p, this.x, this.y, this.size, this.type)
-                )
+                splashes.push(createSplash(p, this.x, this.y, this.size))
                 this.alpha = 0
               }
             }
@@ -264,15 +258,15 @@ export default function AnimatedBackground() {
 
             switch (this.type) {
               case "cross":
-                p.line(-this.size / 2, 0, this.size / 2, 0)
-                p.line(0, -this.size / 2, 0, this.size / 2)
+                void p.line(-this.size / 2, 0, this.size / 2, 0)
+                void p.line(0, -this.size / 2, 0, this.size / 2)
                 break
               case "square":
-                p.rectMode(p.CENTER)
-                p.rect(0, 0, this.size, this.size)
+                void p.rectMode(p.CENTER)
+                void p.rect(0, 0, this.size, this.size)
                 break
               case "line":
-                p.line(-this.size / 2, 0, this.size / 2, 0)
+                void p.line(-this.size / 2, 0, this.size / 2, 0)
                 break
             }
             p.pop()

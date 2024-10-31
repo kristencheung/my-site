@@ -14,7 +14,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js" />
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"
+          async
+        />
       </head>
       <body className="bg-[#1E1E1E]">{children}</body>
     </html>
