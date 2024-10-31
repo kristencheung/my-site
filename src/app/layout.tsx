@@ -1,3 +1,4 @@
+import Script from "next/script"
 import "./globals.css"
 import { Metadata } from "next"
 
@@ -14,12 +15,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script
+        <Script
           src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"
-          async
+          strategy="beforeInteractive"
         />
       </head>
-      <body className="bg-[#1E1E1E]">{children}</body>
+      <body className="bg-black">{children}</body>
     </html>
   )
 }

@@ -326,7 +326,7 @@ export default function AnimatedBackground() {
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 bg-[#1E1E1E]"
+      className="absolute inset-0 bg-black"
       aria-hidden="true"
     />
   )
