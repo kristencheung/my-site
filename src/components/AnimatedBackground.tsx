@@ -36,8 +36,10 @@ export default function AnimatedBackground() {
           textHeight: isMobile ? 40 : 60, // Smaller collision height on mobile
           splashSize: isMobile ? 0.4 : 0.6, // Smaller splash on mobile
           symbolSize: isMobile ? 0.8 : 1, // Slightly smaller symbols on mobile
-          particleCount: isMobile ? 3 : 4, // Fewer particles on mobile
+          particleCount: isMobile ? 4 : 5, // Fewer particles on mobile
           splashSpeed: isMobile ? 0.8 : 1, // Slower splash on mobile
+          generationRate: isMobile ? 4 : 3, // Lower number = more particles
+          maxParticles: isMobile ? 80 : 120, // Maximum particles on screen
         }
       }
 
